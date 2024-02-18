@@ -1,4 +1,3 @@
-//
 //  NotesViewController.swift
 //  Заметки
 //
@@ -12,8 +11,10 @@ class NotesViewController: UIViewController {
     
     let realm = try! Realm()
     let tableView = UITableView()
-    var notes = List<Note>()
+    private var notes = List<Note>()
 
+//    MARK: - Methods of VC's lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,7 +43,11 @@ class NotesViewController: UIViewController {
         ])
     }
     
-//     MARK: - Методы конфигурации VC
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+    
+//     MARK: - Methods of VC configuration
     
     func addAllSubviews() {
         view.addSubview(tableView)
@@ -70,14 +75,14 @@ class NotesViewController: UIViewController {
     }
     
     @objc func addNoteButtonTapped() {
-        let note = Note(text: "New note")
+        let note = Note(text: "New noteNew noteNew noteNew noteNew noteNew notNew noteNew noteNew noteNew noteNew noteNew notNew noteNew noteNew noteNew noteNew noteNew note")
         
         notes.append(note)
         saveNotes()
         tableView.reloadData()
     }
     
-//     MARK: - Методы, использующие Realm
+//     MARK: - Realm-using Methods
 
     func defaultNote() {
         if notes.count == 0 {
@@ -135,5 +140,13 @@ extension NotesViewController: UITableViewDelegate {
             deleteNote(index: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+           tableView.deselectRow(at: indexPath, animated: true)
+        let editingViewController = EditingViewController()
+//        editingViewController.delegate = self
+        editingViewController.note = notes[indexPath.row]
+        navigationController?.pushViewController(editingViewController, animated: true)
     }
 }

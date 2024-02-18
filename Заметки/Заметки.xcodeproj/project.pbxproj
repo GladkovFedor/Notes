@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A11B59F22B7BBCF1005F55F1 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = A11B59F12B7BBCF1005F55F1 /* Realm */; };
 		A11B59F42B7BBCF1005F55F1 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A11B59F32B7BBCF1005F55F1 /* RealmSwift */; };
+		A1267DA42B7E5846009EF9D3 /* EditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1267DA32B7E5846009EF9D3 /* EditingViewController.swift */; };
 		A18071312B7B34010021D3B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18071302B7B34010021D3B3 /* AppDelegate.swift */; };
 		A18071332B7B34010021D3B3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18071322B7B34010021D3B3 /* SceneDelegate.swift */; };
 		A180713A2B7B34020021D3B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A18071392B7B34020021D3B3 /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A1267DA32B7E5846009EF9D3 /* EditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingViewController.swift; sourceTree = "<group>"; };
 		A180712D2B7B34010021D3B3 /* Заметки.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Заметки.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A18071302B7B34010021D3B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A18071322B7B34010021D3B3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				A18071302B7B34010021D3B3 /* AppDelegate.swift */,
 				A18071322B7B34010021D3B3 /* SceneDelegate.swift */,
 				A18071442B7B37090021D3B3 /* NotesViewController.swift */,
+				A1267DA32B7E5846009EF9D3 /* EditingViewController.swift */,
 				A1A595342B7CD7370060015B /* Notes.swift */,
 				A18071392B7B34020021D3B3 /* Assets.xcassets */,
 				A180713B2B7B34020021D3B3 /* LaunchScreen.storyboard */,
@@ -151,6 +154,7 @@
 				A18071452B7B37090021D3B3 /* NotesViewController.swift in Sources */,
 				A18071312B7B34010021D3B3 /* AppDelegate.swift in Sources */,
 				A18071332B7B34010021D3B3 /* SceneDelegate.swift in Sources */,
+				A1267DA42B7E5846009EF9D3 /* EditingViewController.swift in Sources */,
 				A1A595352B7CD7370060015B /* Notes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

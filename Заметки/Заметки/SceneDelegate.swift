@@ -22,6 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
         
         let notesViewController = NotesViewController()
+//        let editingViewController = EditingViewController()
         let navigationController = UINavigationController(rootViewController: notesViewController)
         window?.rootViewController = navigationController
     }
