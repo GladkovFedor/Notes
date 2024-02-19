@@ -64,14 +64,30 @@
 			children = (
 				A18071302B7B34010021D3B3 /* AppDelegate.swift */,
 				A18071322B7B34010021D3B3 /* SceneDelegate.swift */,
-				A18071442B7B37090021D3B3 /* NotesViewController.swift */,
-				A1267DA32B7E5846009EF9D3 /* EditingViewController.swift */,
-				A1A595342B7CD7370060015B /* Notes.swift */,
+				A187D4932B83719A00E2F0A7 /* VC's */,
+				A187D4942B8371AF00E2F0A7 /* Models */,
 				A18071392B7B34020021D3B3 /* Assets.xcassets */,
 				A180713B2B7B34020021D3B3 /* LaunchScreen.storyboard */,
 				A180713E2B7B34020021D3B3 /* Info.plist */,
 			);
 			path = "Заметки";
+			sourceTree = "<group>";
+		};
+		A187D4932B83719A00E2F0A7 /* VC's */ = {
+			isa = PBXGroup;
+			children = (
+				A18071442B7B37090021D3B3 /* NotesViewController.swift */,
+				A1267DA32B7E5846009EF9D3 /* EditingViewController.swift */,
+			);
+			path = "VC's";
+			sourceTree = "<group>";
+		};
+		A187D4942B8371AF00E2F0A7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A1A595342B7CD7370060015B /* Notes.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

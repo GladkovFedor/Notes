@@ -18,7 +18,7 @@ class NotesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .red
+        view.backgroundColor = .white
         
         let safeLayout = self.view.safeAreaLayoutGuide
         
@@ -45,6 +45,7 @@ class NotesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
+        navigationController?.navigationBar.backgroundColor = .white
     }
     
 //     MARK: - Methods of VC configuration
@@ -57,17 +58,19 @@ class NotesViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.backgroundColor = .systemGray
+        tableView.backgroundColor = .white
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
     
     func configureNavigationBar() {
-        guard let navigationbar = navigationController?.navigationBar else {
+        guard let navigationBar = navigationController?.navigationBar else {
             return
         }
         
         title = "Заметки"
-        navigationbar.tintColor = .white
+        navigationBar.tintColor = .black
+        navigationBar.backgroundColor = .white
+        
         
         let addNoteButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addNoteButtonTapped))
     
@@ -75,7 +78,8 @@ class NotesViewController: UIViewController {
     }
     
     @objc func addNoteButtonTapped() {
-        let note = Note(text: "New noteNew noteNew noteNew noteNew noteNew notNew noteNew noteNew noteNew noteNew noteNew notNew noteNew noteNew noteNew noteNew noteNew note")
+        let note = Note(name: "New note")
+        note.text = "Place for your note"
         
         notes.append(note)
         saveNotes()
@@ -86,7 +90,7 @@ class NotesViewController: UIViewController {
 
     func defaultNote() {
         if notes.count == 0 {
-            let defaultNote = Note(text: "There's no notes here yet.")
+            let defaultNote = Note(name: "There's no notes here yet.")
             notes.append(defaultNote)
         }
     }
@@ -126,8 +130,8 @@ extension NotesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-            cell.textLabel?.text = notes[indexPath.row].text
-            cell.backgroundColor = .gray
+            cell.textLabel?.text = notes[indexPath.row].name
+            cell.backgroundColor = .white
         return cell
     }
 }

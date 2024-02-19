@@ -19,7 +19,7 @@ class EditingViewController: UIViewController {
     let scrollView: UIScrollView = {
         
         let sv = UIScrollView()
-            sv.backgroundColor = .blue
+            sv.backgroundColor = .white
             sv.keyboardDismissMode = .interactive
             sv.translatesAutoresizingMaskIntoConstraints = false
             sv.keyboardDismissMode = .interactive
@@ -29,7 +29,7 @@ class EditingViewController: UIViewController {
     let contentView: UIView = {
         
         let cv = UIView()
-            cv.backgroundColor = .green
+            cv.backgroundColor = .white
             cv.translatesAutoresizingMaskIntoConstraints = false
         return cv
     }()
@@ -40,6 +40,9 @@ class EditingViewController: UIViewController {
             tv.backgroundColor = .white
             tv.textAlignment = .left
             tv.font = UIFont.systemFont(ofSize: 18)
+            tv.layer.cornerRadius = 10
+            tv.layer.borderColor = UIColor.gray.cgColor
+            tv.layer.borderWidth = 1
             tv.isScrollEnabled = false
             tv.isEditable = true
             tv.isSelectable = true
@@ -52,12 +55,14 @@ class EditingViewController: UIViewController {
         
         let tv = UITextView()
             tv.backgroundColor = .white
-            tv.text = "Place for your note"
+            tv.textAlignment = .left
             tv.font = UIFont.systemFont(ofSize: 18)
+            tv.layer.cornerRadius = 10
+            tv.layer.borderColor = UIColor.gray.cgColor
+            tv.layer.borderWidth = 1
             tv.isScrollEnabled = false
             tv.isEditable = true
             tv.isSelectable = true
-            tv.textAlignment = .left
             tv.translatesAutoresizingMaskIntoConstraints = false
         return tv
     }()
@@ -67,7 +72,7 @@ class EditingViewController: UIViewController {
         let btn = UIButton()
             btn.setTitle("Save changes", for: .normal)
             
-            btn.layer.backgroundColor = UIColor.blue.cgColor
+            btn.backgroundColor = .systemBlue
             btn.layer.cornerRadius = 10
         
             btn.isEnabled = false
@@ -95,7 +100,8 @@ class EditingViewController: UIViewController {
         noteTitle.delegate = self
         noteText.delegate = self
         
-        noteTitle.text = note?.text
+        noteTitle.text = note?.name
+        noteText.text = note?.text
         
         NSLayoutConstraint.activate([
             view.topAnchor.constraint(equalTo: safeLayout.topAnchor),
@@ -123,8 +129,8 @@ class EditingViewController: UIViewController {
 //                        textTextView.heightAnchor.constraint(equalToConstant: 400),
 
                         saveChangesButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-                        saveChangesButton.heightAnchor.constraint(equalToConstant: 50),
-                        saveChangesButton.widthAnchor.constraint(equalTo: contentView.widthAnchor, constant: -50),
+                        saveChangesButton.heightAnchor.constraint(equalToConstant: 35),
+                        saveChangesButton.widthAnchor.constraint(equalTo: contentView.widthAnchor, constant: -200),
                         saveChangesButton.topAnchor.constraint(equalTo: noteText.bottomAnchor, constant: 10),
                         saveChangesButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
             
@@ -134,6 +140,7 @@ class EditingViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.navigationBar.backgroundColor = .white
         subscribeKeyboardEvents()
     }
     
@@ -158,8 +165,8 @@ class EditingViewController: UIViewController {
         }
         
         title = "Editing a note"
-        navigationbar.tintColor = .white
-        navigationbar.backgroundColor = .gray
+        navigationbar.tintColor = .black
+        navigationbar.backgroundColor = .white
         
         //        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: UIBarButtonItem.Style.plain, target: self, action: #selector(doneButtonTapped))
     }
@@ -176,10 +183,11 @@ class EditingViewController: UIViewController {
         let updatedNote = Note()
         updatedNote.noteID = note!.noteID
         
-        if noteTitle.text.isEmpty {
-            updatedNote.text = "Empty note"
+        if noteTitle.text.isEmpty && noteText.text.isEmpty {
+            updatedNote.name = "Empty note"
         } else {
-            updatedNote.text = noteTitle.text
+            updatedNote.name = noteTitle.text
+            updatedNote.text = noteText.text
         }
         
         do {
@@ -189,6 +197,7 @@ class EditingViewController: UIViewController {
         } catch let error as NSError {
             print("Error writing to realm: \(error)")
         }
+        updateViewConstraints()
     }
     
     func subscribeKeyboardEvents() {

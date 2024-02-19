@@ -10,13 +10,14 @@ import RealmSwift
 
 class Note: Object {
     
+    @Persisted var name = ""
     @Persisted var text = ""
     @Persisted var noteID: ObjectId = ObjectId.generate()
     @Persisted var data: Data?
     
-    convenience init(text: String) {
+    convenience init(name: String) {
         self.init()
-        self.text = text
+        self.name = name
     }
     
     override static func primaryKey() -> String? {
